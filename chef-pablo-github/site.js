@@ -7,6 +7,14 @@ var LANG = (function(){
   return l;
 })();
 var EN = {
+  'Desayunos a domicilio': 'Breakfast at home',
+  'Ver fotos': 'See photos',
+  'Huevos pochados con salmón': 'Poached eggs with salmon',
+  'Bol de fruta fresca': 'Fresh fruit bowl',
+  'Croissant de jamón y queso': 'Ham and cheese croissant',
+  'Tostada de aguacate y tomate': 'Avocado and tomato toast',
+  'Avena con plátano y fresas': 'Oats with banana and strawberries',
+  'Hojaldre dorado': 'Golden puff pastry',
   'Pablo Sánchez · Chef Privado en Marbella y Málaga': 'Pablo Sánchez · Private Chef in Marbella and Málaga',
   'Chef privado en Marbella y Málaga. Arroces, catering exclusivo, cenas privadas, desayunos y eventos a medida.': 'Private chef in Marbella and Málaga. Paellas, exclusive catering, private dinners, breakfasts and bespoke events.',
   'Pablo Sánchez, inicio': 'Pablo Sánchez, home', 'Idioma': 'Language',

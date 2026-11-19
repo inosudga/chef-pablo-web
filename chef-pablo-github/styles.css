@@ -213,3 +213,49 @@ footer .firma:hover{color:var(--crema)}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .revela{clip-path:none}
 }
+
+.acciones-desayunos{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.galeria-desayunos{
+  background:var(--crema);
+  scroll-margin-top:64px;
+}
+
+.galeria-desayunos h2{
+  margin-bottom:clamp(24px,4vw,48px);
+}
+
+.fotos-desayunos{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(14px,3vw,34px);
+  margin-bottom:clamp(24px,4vw,48px);
+}
+
+.fotos-desayunos figure{
+  margin:0;
+}
+
+.fotos-desayunos img{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  background:#670e13;
+}
+
+.fotos-desayunos figcaption{
+  padding-top:8px;
+  color:var(--carbon-suave);
+}
+
+@media (max-width:760px){
+  .fotos-desayunos{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
