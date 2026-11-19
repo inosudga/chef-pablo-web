@@ -71,7 +71,8 @@ var EN = {
   'Abrir el asistente': 'Open the assistant', 'Asistente': 'Assistant', 'Asistente de Pablo Sánchez': 'Pablo Sánchez’s assistant', 'Asistente de Pablo': 'Pablo’s assistant',
   'Responde al momento': 'Replies instantly', 'Cerrar el asistente': 'Close the assistant', 'Escribe tu pregunta…': 'Type your question…', 'Tu mensaje': 'Your message', 'Enviar': 'Send',
   'Web diseñada por': 'Website designed by',
-  'Hola Pablo, he visto tu web y me gustaría pedir presupuesto.': 'Hi Pablo, I have seen your website and would like to request a quote.'
+  'Hola Pablo, te escribo para pedir presupuesto.': 'Hi Pablo, I’m getting in touch to request a quote.',
+  'Hola Pablo, te escribo para pedir presupuesto para lo siguiente:': 'Hi Pablo, I’m getting in touch to request a quote for the following:'
 };
 function t(s){ return LANG === 'en' && EN[s] ? EN[s] : s; }
 (function(){
@@ -148,10 +149,9 @@ function t(s){ return LANG === 'en' && EN[s] ? EN[s] : s; }
   /* Número del chef con prefijo internacional, sin + ni espacios. */
   var WA_NUM = '34628994399';
   function wa(texto){ return 'https://wa.me/' + WA_NUM + '?text=' + encodeURIComponent(texto); }
-  [].forEach.call(document.querySelectorAll('.wa-gen'), function(a){ a.href = wa(t('Hola Pablo, he visto tu web y me gustaría pedir presupuesto.')); });
 
   var sel = {servicio:'', comensales:'', lugar:'', fecha:''};
-  var waMinuta = document.getElementById('wa-minuta');
+  var enlacesPresupuesto = document.querySelectorAll('#wa-minuta, .wa-gen');
   function fechaBonita(v){ var p = v.split('-'); return p.length === 3 ? p[2] + '/' + p[1] + '/' + p[0] : ''; }
   function minuta(){
     Object.keys(sel).forEach(function(k){
@@ -159,12 +159,17 @@ function t(s){ return LANG === 'en' && EN[s] ? EN[s] : s; }
       dd.textContent = sel[k] || t('Por elegir');
       dd.classList.toggle('vacio', !sel[k]);
     });
-    var l = [t('Hola Pablo, he visto tu web y me gustaría pedir presupuesto.')];
-    if(sel.servicio) l.push(t('Servicio') + ': ' + sel.servicio);
-    if(sel.comensales) l.push(t('Comensales') + ': ' + sel.comensales);
-    if(sel.lugar) l.push(t('Lugar') + ': ' + sel.lugar);
-    if(sel.fecha) l.push(t('Fecha') + ': ' + sel.fecha);
-    waMinuta.href = wa(l.join('\n'));
+    var enlace = wa(mensajePresupuesto());
+    enlacesPresupuesto.forEach(function(a){ a.href = enlace; });
+    enlaceChat();
+  }
+  function mensajePresupuesto(){
+    var campos = {servicio:'Servicio', comensales:'Comensales', lugar:'Lugar', fecha:'Fecha'};
+    var detalles = Object.keys(campos).filter(function(k){ return sel[k]; }).map(function(k){
+      return '*' + t(campos[k]) + ':* ' + sel[k];
+    });
+    if (!detalles.length) return t('Hola Pablo, te escribo para pedir presupuesto.');
+    return t('Hola Pablo, te escribo para pedir presupuesto para lo siguiente:') + '\n\n' + detalles.join('\n');
   }
   [].forEach.call(document.querySelectorAll('.chip'), function(c){
     c.addEventListener('click', function(){
@@ -176,7 +181,6 @@ function t(s){ return LANG === 'en' && EN[s] ? EN[s] : s; }
     });
   });
   document.getElementById('d-fecha').addEventListener('input', function(e){ sel.fecha = fechaBonita(e.target.value); minuta(); });
-  minuta();
 
   /* Asistente: respuestas automáticas escritas aquí (sin servicio externo). Nunca da precios y siempre lleva a WhatsApp. */
   var chat = document.getElementById('chat'), flot = document.getElementById('flot'), hilo = document.getElementById('hilo');
@@ -241,7 +245,7 @@ function t(s){ return LANG === 'en' && EN[s] ? EN[s] : s; }
     return R.otro;
   }
   function burbuja(txt, quien){ var d = document.createElement('div'); d.className = 'msg ' + quien; d.textContent = txt; hilo.appendChild(d); hilo.scrollTop = hilo.scrollHeight; return d; }
-  function enlaceChat(){ waChat.href = wa(t('Hola Pablo, he visto tu web y me gustaría pedir presupuesto.') + (mias.length ? '\n' + mias.join('\n') : '')); }
+  function enlaceChat(){ waChat.href = wa(mensajePresupuesto() + (mias.length ? '\n\n' + mias.join('\n') : '')); }
   function enviar(txt){
     txt = (txt || '').trim();
     if(!txt || ocupado) return;
@@ -274,4 +278,5 @@ function cerrar() {
 document.getElementById('chat-cerrar').addEventListener('click', cerrar);
 chat.addEventListener('keydown', function(e){ if (e.key === 'Escape') cerrar(); });
   document.getElementById('chat-form').addEventListener('submit', function(e){ e.preventDefault(); enviar(campo.value); });
+  minuta();
 })();
