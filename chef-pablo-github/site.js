@@ -145,8 +145,8 @@ function t(s){ return LANG === 'en' && EN[s] ? EN[s] : s; }
       window.scrollTo({top: top + rec * (k / (N - 1)), behavior: quieto ? 'auto' : 'smooth'});
     });
   });
-  /* WhatsApp: pon aquí el número de Pablo con prefijo, sin + ni espacios (ej. 34600000000). Vacío = el cliente elige el contacto. */
-  var WA_NUM = '';
+  /* Número del chef con prefijo internacional, sin + ni espacios. */
+  var WA_NUM = '34628994399';
   function wa(texto){ return 'https://wa.me/' + WA_NUM + '?text=' + encodeURIComponent(texto); }
   [].forEach.call(document.querySelectorAll('.wa-gen'), function(a){ a.href = wa(t('Hola Pablo, he visto tu web y me gustaría pedir presupuesto.')); });
 
