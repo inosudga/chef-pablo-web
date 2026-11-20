@@ -7,6 +7,8 @@ var LANG = (function(){
   return l;
 })();
 var EN = {
+  'Abrir en WhatsApp Web': 'Open in WhatsApp Web',
+  'Completa el servicio, los comensales, el lugar y la fecha para enviar tu propuesta.': 'Choose the service, guests, venue and date to send your request.',
   'Desayunos a domicilio': 'Breakfast at home',
   'Ver fotos': 'See photos',
   'Huevos pochados con salmón': 'Poached eggs with salmon',
@@ -159,8 +161,14 @@ function t(s){ return LANG === 'en' && EN[s] ? EN[s] : s; }
       dd.textContent = sel[k] || t('Por elegir');
       dd.classList.toggle('vacio', !sel[k]);
     });
-    var enlace = wa(mensajePresupuesto());
+    var mensaje = mensajePresupuesto();
+    var enlace = wa(mensaje);
+    var enlaceWeb = new URL('https://web.whatsapp.com/send');
+    enlaceWeb.searchParams.set('phone', WA_NUM);
+    enlaceWeb.searchParams.set('text', mensaje);
+    document.getElementById('wa-web-minuta').href = enlaceWeb.href;
     enlacesPresupuesto.forEach(function(a){ a.href = enlace; });
+    document.getElementById('wa-estado').hidden = true;
     enlaceChat();
   }
   function mensajePresupuesto(){
@@ -278,5 +286,23 @@ function cerrar() {
 document.getElementById('chat-cerrar').addEventListener('click', cerrar);
 chat.addEventListener('keydown', function(e){ if (e.key === 'Escape') cerrar(); });
   document.getElementById('chat-form').addEventListener('submit', function(e){ e.preventDefault(); enviar(campo.value); });
+  var estadoPresupuesto = document.getElementById('wa-estado');
+  function mostrarEstadoPresupuesto(mensaje){
+    estadoPresupuesto.hidden = false;
+    estadoPresupuesto.textContent = t(mensaje);
+  }
+  function prepararEnvio(evento){
+    var pendiente = Object.keys(sel).find(function(campo){ return !sel[campo]; });
+    if (pendiente) {
+      evento.preventDefault();
+      mostrarEstadoPresupuesto('Completa el servicio, los comensales, el lugar y la fecha para enviar tu propuesta.');
+      var control = pendiente === 'fecha' ? document.getElementById('d-fecha') : document.querySelector('.chip[data-g="' + pendiente + '"]');
+      control.focus();
+      return;
+    }
+  }
+  document.querySelectorAll('#wa-minuta, #wa-web-minuta').forEach(function(control){
+    control.addEventListener('click', prepararEnvio);
+  });
   minuta();
 })();
