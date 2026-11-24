@@ -7,6 +7,7 @@ var LANG = (function(){
   return l;
 })();
 var EN = {
+  'Ocultar paellas': 'Hide paellas',
   'Ver paellas': 'See paellas',
   'Selección de paellas': 'Paella selection',
   'Anterior': 'Previous',
@@ -317,6 +318,8 @@ chat.addEventListener('keydown', function(e){ if (e.key === 'Escape') cerrar(); 
 })();
 
 (function(){
+  var alternar = document.getElementById('alternar-paellas');
+  var seccion = document.getElementById('paellas');
   var galeria = document.getElementById('paellas-fotos');
   var navegacion = document.querySelector('.paellas-navegacion');
   var botones = navegacion.querySelectorAll('button');
@@ -329,6 +332,17 @@ chat.addEventListener('keydown', function(e){ if (e.key === 'Escape') cerrar(); 
     botones[1].disabled = galeria.scrollLeft >= maximo - 2;
   }
 
+  alternar.addEventListener('click', function(){
+    var abrir = seccion.hidden;
+    seccion.hidden = !abrir;
+    alternar.setAttribute('aria-expanded', String(abrir));
+    alternar.textContent = t(abrir ? 'Ocultar paellas' : 'Ver paellas');
+    if (abrir) {
+      actualizarBotones();
+      galeria.focus({preventScroll:true});
+      seccion.scrollIntoView({block:'start'});
+    }
+  });
   navegacion.hidden = false;
   botones.forEach(function(boton){
     boton.addEventListener('click', function(){

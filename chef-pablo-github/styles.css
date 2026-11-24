@@ -251,14 +251,15 @@ footer .firma:hover{color:var(--crema)}
 }
 
 .servicios-linea a{color:inherit;text-underline-offset:.28em}
-.portada-arroces{position:relative;min-height:min(100svh,850px);color:var(--crema);background:var(--carbon)}
-#paellas{scroll-margin-top:64px}
+.portada-arroces{position:relative;min-height:clamp(390px,65svh,610px);color:var(--crema);background:var(--carbon)}
+#paellas{scroll-margin-top:64px;padding-block:clamp(32px,6vw,70px)}
+#paellas .cabecera{margin-bottom:clamp(18px,3vw,30px)}
 #paellas h3{font:400 clamp(2rem,5vw,3.4rem)/1.08 var(--display)}
 .paellas-fotos{
   position:relative;
   display:grid;
   grid-auto-flow:column;
-  grid-auto-columns:calc((100% - clamp(16px,3vw,32px))/2);
+  grid-auto-columns:calc((100% - 2 * clamp(16px,3vw,32px))/3);
   gap:clamp(16px,3vw,32px);
   list-style:none;
   margin:0 0 22px;
@@ -276,6 +277,20 @@ footer .firma:hover{color:var(--crema)}
 .paellas-navegacion button{cursor:pointer}
 .paellas-navegacion button:disabled{opacity:.5;cursor:default}
 @media(max-width:760px){
-  .paellas-fotos{grid-auto-columns:85%}
-  .paellas-fotos img{aspect-ratio:4/5}
+  .paellas-fotos{grid-auto-columns:72%}
+  .paellas-fotos img{aspect-ratio:4/3}
+}
+
+/* Fotografías y portadas */
+.portada,.panel,.banda,.sobre img,.fotos-desayunos img,.paellas-fotos img{
+  border-radius:clamp(12px,2vw,24px);
+}
+.portada-arroces button{
+  background:transparent;
+  color:inherit;
+  cursor:pointer;
+}
+.portada-arroces button:hover{
+  background:var(--crema);
+  color:var(--carbon);
 }
