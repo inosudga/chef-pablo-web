@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap">
 
 
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=arroces">
 </head>
 <body>
 
@@ -31,7 +31,7 @@
     <img class="logo" src="img/logo-cream.png" alt="PS, Chef Privado">
     <h1>Alta cocina, en tu mesa.</h1>
     <ul class="servicios-linea">
-      <li>Catering</li><li>Desayunos</li><li>Arroces</li><li>Cenas</li><li>Eventos privados</li>
+      <li>Catering</li><li>Desayunos</li><li><a href="#arroces">Arroces</a></li><li>Cenas</li><li>Eventos privados</li>
     </ul>
     <a class="btn" href="#solicitud">Solicita tu experiencia</a>
   </div>
@@ -47,10 +47,33 @@
   </ul>
 </section>
 
+<section id="arroces" aria-labelledby="titulo-arroces">
+  <article class="panel portada-arroces"><img src="img/pablo2.jpg" alt="Pablo Sánchez terminando una paella al aire libre, con el monograma PS en la camiseta" style="object-position:58% center">
+      <div class="cuerpo"><p class="eyebrow">La especialidad de la casa</p><h2 id="titulo-arroces">Arroces</h2><p class="frase">Cocinados a la vista, delante de tus invitados. Elige entre nuestros arroces o diseñamos uno para tu celebración.</p><a class="btn" href="#paellas">Ver paellas</a></div></article>
+  <div class="seccion" id="paellas">
+    <div class="wrap">
+      <div class="cabecera">
+        <h3>Selección de paellas</h3>
+      </div>
+      <ul class="paellas-fotos" id="paellas-fotos" tabindex="0" aria-label="Selección de paellas">
+        <li><figure><img src="img/arroces/presa-iberica.jpg" width="1347" height="1600" loading="lazy" decoding="async" alt=""><figcaption>Presa ibérica, setas, foie y mayonesa de trufa</figcaption></figure></li>
+        <li><figure><img src="img/arroces/arroz-negro.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt=""><figcaption>Arroz negro de gamba roja, vieiras y alioli de cabezas de gamba</figcaption></figure></li>
+        <li><figure><img src="img/arroces/chuleton-gamba-roja.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt=""><figcaption>Chuletón de vaca rubia, gamba roja y judías verdes</figcaption></figure></li>
+        <li><figure><img src="img/arroces/carabineros.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt=""><figcaption>Carabineros, calamares y gambón</figcaption></figure></li>
+      </ul>
+      <div class="paellas-acciones">
+        <div class="paellas-navegacion" hidden>
+          <button class="btn oscuro" type="button" data-paellas="-1" aria-controls="paellas-fotos">Anterior</button>
+          <button class="btn oscuro" type="button" data-paellas="1" aria-controls="paellas-fotos">Siguiente</button>
+        </div>
+        <a class="btn oscuro lleno" href="#solicitud">Pide tu arroz</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="servicios" id="servicios" aria-label="Servicios">
   <div class="escena">
-    <article class="panel"><img src="img/pablo2.jpg" alt="Pablo Sánchez terminando una paella al aire libre, con el monograma PS en la camiseta" style="object-position:58% center">
-      <div class="cuerpo"><p class="eyebrow">La especialidad de la casa</p><h2>Arroces</h2><p class="frase">Cocinados a la vista, delante de tus invitados. Presa ibérica y foie, negro con carabineros o el que diseñemos para ti.</p><a class="btn" href="#solicitud">Consultar</a></div></article>
     <article class="panel"><img src="img/catering.jpg" alt="Brioches de carne mechada con brotes" style="object-position:center">
       <div class="cuerpo"><p class="eyebrow">Para celebraciones</p><h2>Catering exclusivo</h2><p class="frase">Bocados preparados al momento, tablas de quesos e ibéricos, servidos en casa, en la villa o en el barco.</p><a class="btn" href="#solicitud">Consultar</a></div></article>
     <article class="panel"><img src="img/mesa.jpg" alt="Mesa montada con la minuta y la tarjeta de Pablo Sánchez" style="object-position:center 62%">
@@ -59,7 +82,7 @@
       <div class="cuerpo"><p class="eyebrow">En tu terraza</p><h2>Desayunos</h2><p class="frase">La mañana servida en casa: fruta fresca cortada al momento, bollería recién hecha, huevos al gusto y café.</p><div class="acciones-desayunos"><a class="btn" href="#solicitud">Consultar</a><a class="btn" href="#desayunos">Ver fotos</a></div></div></article>
     <article class="panel"><img src="img/eventos.jpg" alt="Mesa larga blanca con vistas al mar" style="object-position:center">
       <div class="cuerpo"><p class="eyebrow">Experiencias gastronómicas</p><h2>Eventos a medida</h2><p class="frase">Cumpleaños, aniversarios y encuentros de empresa. Pablo se ocupa del menú, el montaje y el equipo.</p><a class="btn" href="#solicitud">Consultar</a></div></article>
-    <nav class="indice" aria-label="Servicios"><button type="button" aria-label="Arroces">1</button><button type="button" aria-label="Catering exclusivo">2</button><button type="button" aria-label="Cenas privadas">3</button><button type="button" aria-label="Desayunos">4</button><button type="button" aria-label="Eventos a medida">5</button></nav>
+    <nav class="indice" aria-label="Servicios"><button type="button" aria-label="Catering exclusivo">1</button><button type="button" aria-label="Cenas privadas">2</button><button type="button" aria-label="Desayunos">3</button><button type="button" aria-label="Eventos a medida">4</button></nav>
   </div>
 </section>
 
@@ -125,23 +148,6 @@
   </div>
 </section>
 
-<section class="seccion" id="arroces">
-  <div class="wrap arroces">
-    <img class="revela" src="img/vieiras-sin-marca.jpg" style="aspect-ratio:4/5" alt="Vieiras en su concha preparadas sobre la paellera antes de cocinar">
-    <div class="txt">
-      <p class="eyebrow">Especialista en arroces</p>
-      <h2>El lujo también se sirve en paella.</h2>
-      <p>Pablo cocina cada arroz delante de los invitados, con el producto elegido esa misma mañana. Es el momento que todos recuerdan de la celebración.</p>
-      <ul class="carta">
-        <li>Presa ibérica, foie y setas de temporada</li>
-        <li>Arroz negro con carabineros</li>
-        <li>Vieiras y carabinero</li>
-      </ul>
-      <a class="btn oscuro" href="#solicitud">Pide tu arroz</a>
-    </div>
-  </div>
-</section>
-
 <section class="seccion">
   <div class="wrap sobre">
     <img class="revela" src="img/producto.jpg" alt="Setas, judías verdes, tomates cherry y romero sobre una tabla, junto a los cucharones y cuchillos del chef">
@@ -169,7 +175,7 @@
   <div class="wrap">
     <img src="img/logo-cream.png" alt="PS, Chef Privado">
     <p>Marbella · Málaga · <a href="https://www.instagram.com/chefpablosanchez/" target="_blank" rel="noopener" style="text-decoration:none">@chefpablosanchez</a></p>
-    <a class="firma" href="https://gcfuturedesign.com/?utm_source=chefpablosanchez&amp;utm_medium=footer" target="_blank" rel="noopener">Web diseñada por <strong>GC Future Design</strong> · gcfuturedesign.com</a>
+    <a class="firma" href="https://inosudga.com/" target="_blank" rel="noopener">Diseñado por <strong>INOSU DGA</strong> · inosudga.com</a>
   </div>
 </footer>
 
@@ -185,6 +191,6 @@
   <a class="pie-chat" id="wa-chat" target="_blank" rel="noopener" href="#">Pedir presupuesto por WhatsApp</a>
 </section>
 
-<script src="site.js?v=presupuesto-directo" defer></script>
+<script src="site.js?v=arroces" defer></script>
 </body>
 </html>

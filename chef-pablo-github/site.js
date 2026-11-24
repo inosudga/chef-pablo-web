@@ -7,6 +7,15 @@ var LANG = (function(){
   return l;
 })();
 var EN = {
+  'Ver paellas': 'See paellas',
+  'Selección de paellas': 'Paella selection',
+  'Anterior': 'Previous',
+  'Siguiente': 'Next',
+  'Cocinados a la vista, delante de tus invitados. Elige entre nuestros arroces o diseñamos uno para tu celebración.': 'Cooked in front of your guests. Choose one of our paellas or let us design one for your celebration.',
+  'Presa ibérica, setas, foie y mayonesa de trufa': 'Iberian pork, mushrooms, foie gras and truffle mayonnaise',
+  'Arroz negro de gamba roja, vieiras y alioli de cabezas de gamba': 'Black rice with red prawns, scallops and prawn-head aioli',
+  'Chuletón de vaca rubia, gamba roja y judías verdes': 'Blonde beef rib steak, red prawns and green beans',
+  'Carabineros, calamares y gambón': 'Scarlet prawns, squid and king prawns',
   'Abrir en WhatsApp Web': 'Open in WhatsApp Web',
   'Completa el servicio, los comensales, el lugar y la fecha para enviar tu propuesta.': 'Choose the service, guests, venue and date to send your request.',
   'Desayunos a domicilio': 'Breakfast at home',
@@ -72,7 +81,7 @@ var EN = {
   'Escríbele a Pablo por WhatsApp o resuelve tus dudas con el asistente. Trabaja en Marbella, Málaga y alrededores; consulta otros destinos.': 'Message Pablo on WhatsApp or ask the assistant your questions. He works in Marbella, Málaga and the surrounding area; other destinations on request.',
   'Abrir el asistente': 'Open the assistant', 'Asistente': 'Assistant', 'Asistente de Pablo Sánchez': 'Pablo Sánchez’s assistant', 'Asistente de Pablo': 'Pablo’s assistant',
   'Responde al momento': 'Replies instantly', 'Cerrar el asistente': 'Close the assistant', 'Escribe tu pregunta…': 'Type your question…', 'Tu mensaje': 'Your message', 'Enviar': 'Send',
-  'Web diseñada por': 'Website designed by',
+  'Diseñado por': 'Designed by',
   'Hola Pablo, te escribo para pedir presupuesto.': 'Hi Pablo, I’m getting in touch to request a quote.',
   'Hola Pablo, te escribo para pedir presupuesto para lo siguiente:': 'Hi Pablo, I’m getting in touch to request a quote for the following:'
 };
@@ -305,4 +314,32 @@ chat.addEventListener('keydown', function(e){ if (e.key === 'Escape') cerrar(); 
     control.addEventListener('click', prepararEnvio);
   });
   minuta();
+})();
+
+(function(){
+  var galeria = document.getElementById('paellas-fotos');
+  var navegacion = document.querySelector('.paellas-navegacion');
+  var botones = navegacion.querySelectorAll('button');
+  var primera = galeria.children[0];
+  var segunda = galeria.children[1];
+
+  function actualizarBotones(){
+    var maximo = galeria.scrollWidth - galeria.clientWidth;
+    botones[0].disabled = galeria.scrollLeft < 2;
+    botones[1].disabled = galeria.scrollLeft >= maximo - 2;
+  }
+
+  navegacion.hidden = false;
+  botones.forEach(function(boton){
+    boton.addEventListener('click', function(){
+      var paso = segunda.offsetLeft - primera.offsetLeft;
+      galeria.scrollBy({
+        left: paso * Number(boton.dataset.paellas),
+        behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+      });
+    });
+  });
+  galeria.addEventListener('scroll', actualizarBotones, {passive:true});
+  window.addEventListener('resize', actualizarBotones);
+  actualizarBotones();
 })();

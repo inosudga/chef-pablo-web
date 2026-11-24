@@ -1,6 +1,6 @@
 body{margin:0}img{max-width:100%}[hidden]{display:none!important}
 
-/* Layout: portada oscura a pantalla completa → escenario fijo donde el scroll pasa los cinco servicios → secciones crema con mucho aire. Un solo look (crema + carbón), fiel al logo. */
+/* Layout: portada oscura a pantalla completa → escenario fijo donde el scroll pasa los servicios → secciones crema con mucho aire. Un solo look (crema + carbón), fiel al logo. */
 :root{
   --crema:#f3eee4;
   --crema-2:#e9e2d4;
@@ -63,7 +63,7 @@ a{color:inherit}
 .experiencia span{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;font-weight:400;color:var(--carbon-suave);line-height:1.7}
 
 /* Servicios a pantalla completa */
-.servicios{height:600vh;position:relative;background:var(--carbon)}
+.servicios{height:500vh;position:relative;background:var(--carbon)}
 .escena{position:sticky;top:0;height:100svh;overflow:hidden;color:var(--crema)}
 .panel{position:absolute;inset:0;overflow:hidden;will-change:clip-path}
 .panel img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;will-change:transform}
@@ -80,16 +80,6 @@ a{color:inherit}
 .indice button.activo{opacity:1}
 .indice button.activo::after{width:38px}
 .indice button:focus-visible{outline:2px solid var(--oliva-claro);outline-offset:4px}
-
-/* Arroces */
-.arroces{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,6vw,90px);align-items:center}
-.arroces img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
-.arroces .txt{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
-.arroces .txt>p{color:var(--carbon-suave);max-width:30em}
-.arroces h2{font-style:italic}
-.carta{list-style:none;margin:0;padding:0;width:100%}
-.carta li{font-family:var(--display);font-size:clamp(1.15rem,2vw,1.45rem);padding:.7em 0;border-top:1px solid var(--linea)}
-.carta li:last-child{border-bottom:1px solid var(--linea)}
 
 /* Secciones */
 .seccion{padding-block:clamp(72px,12vw,150px)}
@@ -197,7 +187,7 @@ footer .firma:hover{color:var(--crema)}
 
 @media (max-width:760px){
   body{font-size:16px}
-  .sobre,.arroces,.disena .rejilla{grid-template-columns:minmax(0,1fr)}
+  .sobre,.disena .rejilla{grid-template-columns:minmax(0,1fr)}
   .experiencia ul{grid-template-columns:repeat(2,minmax(0,1fr))}
   .indice button{font-size:.8rem}
   .minuta{rotate:0deg}
@@ -258,4 +248,34 @@ footer .firma:hover{color:var(--crema)}
   .fotos-desayunos{
     grid-template-columns:repeat(2,minmax(0,1fr));
   }
+}
+
+.servicios-linea a{color:inherit;text-underline-offset:.28em}
+.portada-arroces{position:relative;min-height:min(100svh,850px);color:var(--crema);background:var(--carbon)}
+#paellas{scroll-margin-top:64px}
+#paellas h3{font:400 clamp(2rem,5vw,3.4rem)/1.08 var(--display)}
+.paellas-fotos{
+  position:relative;
+  display:grid;
+  grid-auto-flow:column;
+  grid-auto-columns:calc((100% - clamp(16px,3vw,32px))/2);
+  gap:clamp(16px,3vw,32px);
+  list-style:none;
+  margin:0 0 22px;
+  padding:0 0 14px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scrollbar-color:var(--oliva) var(--crema-2);
+}
+.paellas-fotos li{min-width:0;scroll-snap-align:start}
+.paellas-fotos figure{margin:0}
+.paellas-fotos img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:center 57%;background:var(--crema-2)}
+.paellas-fotos figcaption{padding-top:12px;font-size:1.08rem}
+.paellas-acciones,.paellas-navegacion{display:flex;gap:10px;flex-wrap:wrap}
+.paellas-acciones{justify-content:space-between}
+.paellas-navegacion button{cursor:pointer}
+.paellas-navegacion button:disabled{opacity:.5;cursor:default}
+@media(max-width:760px){
+  .paellas-fotos{grid-auto-columns:85%}
+  .paellas-fotos img{aspect-ratio:4/5}
 }
