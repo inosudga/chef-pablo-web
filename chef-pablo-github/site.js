@@ -123,7 +123,7 @@ function t(s){ return LANG === 'en' && EN[s] ? EN[s] : s; }
   var pantallaCompacta = matchMedia('(max-width: 760px), (pointer: coarse)');
   var paneles = [].slice.call(escena.querySelectorAll('.panel'));
   var cuadros = paneles.map(function(panel){
-    return {imagen:panel.firstElementChild, progreso:null, visible:null, fundido:null};
+    return {imagen:panel.firstElementChild, progreso:null, visible:null};
   });
   var puntos = [].slice.call(sec.querySelectorAll('.indice button'));
   var N = paneles.length, pend = false;
@@ -141,25 +141,22 @@ function t(s){ return LANG === 'en' && EN[s] ? EN[s] : s; }
       centro.style.transform = 'translateY(' + (y * -0.18) + 'px)';
       centro.style.opacity = Math.max(0, 1 - t * 1.7);
     }
-  var recorrido = sec.offsetHeight - escena.offsetHeight;
-  var f = lim(-r.top / recorrido) * (N - 1);
-  var fundido = pantallaCompacta.matches || quieto;
-  paneles.forEach(function(panel, k){
-    var cuadro = cuadros[k];
-    var a = k === 0 || f >= k - 0.2 ? 1 : lim((f - k + 0.8) / 0.6);
-    var visible = a > 0 && (k + 1 === N || f < (k + 1) - 0.2);
-    if (cuadro.visible !== visible) {
-      panel.style.visibility = visible ? 'visible' : 'hidden';
-      panel.inert = !visible;
-      cuadro.visible = visible;
-    }
-    if (cuadro.progreso === a && cuadro.fundido === fundido) return;
-    cuadro.progreso = a;
-    cuadro.fundido = fundido;
-    panel.style.opacity = '';
-    panel.style.clipPath = fundido || a === 1 ? '' : 'inset(' + ((1 - a) * 100) + '% 0 0 0)';
-    cuadro.imagen.style.transform = fundido || a === 1 ? '' : 'scale(' + (1.1 - 0.1 * a) + ')';
-  });
+    var f = tarjetas ? 0 : lim(-r.top / (sec.offsetHeight - escena.offsetHeight)) * (N - 1);
+    paneles.forEach(function(panel, k){
+      var cuadro = cuadros[k];
+      var a = k === 0 || f >= k - 0.2 ? 1 : lim((f - k + 0.8) / 0.6);
+      var visible = tarjetas || (a > 0 && (k + 1 === N || f < (k + 1) - 0.2));
+      if (cuadro.visible !== visible) {
+        panel.style.visibility = visible ? 'visible' : 'hidden';
+        panel.inert = !visible;
+        cuadro.visible = visible;
+      }
+      var progreso = tarjetas ? 1 : a;
+      if (cuadro.progreso === progreso) return;
+      cuadro.progreso = progreso;
+      panel.style.clipPath = progreso === 1 ? '' : 'inset(' + ((1 - progreso) * 100) + '% 0 0 0)';
+      cuadro.imagen.style.transform = progreso === 1 ? '' : 'scale(' + (1.1 - 0.1 * progreso) + ')';
+    });
     rev = rev.filter(function(el){
       if(quieto || el.getBoundingClientRect().top < vh * 0.85){ el.classList.add('dentro'); return false; }
       return true;
