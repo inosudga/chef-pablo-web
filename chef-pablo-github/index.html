@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap">
 
 
-  <link rel="stylesheet" href="styles.css?v=servicios-estables">
+  <link rel="stylesheet" href="styles.css?v=servicios-deslizables">
 </head>
 <body>
 
@@ -48,7 +48,8 @@
 </section>
 
 <section class="servicios" id="servicios" aria-label="Servicios">
-  <div class="escena">
+  <p class="servicios-ayuda">Desliza para ver los servicios</p>
+  <div class="escena" tabindex="0" role="group" aria-label="Servicios">
     <article class="panel"><img src="img/catering.jpg" alt="Brioches de carne mechada con brotes" style="object-position:center">
       <div class="cuerpo"><p class="eyebrow">Para celebraciones</p><h2>Catering exclusivo</h2><p class="frase">Bocados preparados al momento, tablas de quesos e ibéricos, servidos en casa, en la villa o en el barco.</p><a class="btn" href="#solicitud">Consultar</a></div></article>
     <article class="panel"><img src="img/mesa.jpg" alt="Mesa montada con la minuta y la tarjeta de Pablo Sánchez" style="object-position:center 62%">
@@ -198,6 +199,6 @@
   <a class="pie-chat" id="wa-chat" target="_blank" rel="noopener" href="#">Pedir presupuesto por WhatsApp</a>
 </section>
 
-<script src="site.js?v=servicios-estables" defer></script>
+<script src="site.js?v=servicios-deslizables" defer></script>
 </body>
 </html>

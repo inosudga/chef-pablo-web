@@ -7,6 +7,7 @@ var LANG = (function(){
   return l;
 })();
 var EN = {
+  'Desliza para ver los servicios': 'Swipe to see the services',
   'Marbella, Málaga y alrededores': 'Marbella, Málaga and surrounding areas',
   'Pablo cocina en tu casa, villa o terraza.': 'Pablo cooks in your home, villa or on your terrace.',
   'Ocultar paellas': 'Hide paellas',

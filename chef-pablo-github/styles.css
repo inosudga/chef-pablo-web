@@ -315,6 +315,8 @@ footer .firma:hover{color:var(--crema)}
 .zona-servicio h2{font-size:clamp(1.65rem,3.2vw,2.5rem)}
 .zona-servicio p{margin-top:.6rem;color:var(--carbon-suave)}
 
+.servicios-ayuda{display:none}
+
 @media (max-width:760px), (pointer:coarse), (prefers-reduced-motion:reduce){
   .portada .foto,.portada #centroPortada{transform:none!important}
   .servicios{
@@ -326,18 +328,26 @@ footer .firma:hover{color:var(--crema)}
     position:static;
     height:auto;
     display:grid;
-    gap:clamp(20px,5vw,36px);
-    overflow:visible;
+    grid-auto-flow:column;
+    grid-auto-columns:min(86%,520px);
+    gap:14px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    scrollbar-color:var(--oliva) var(--crema-2);
+    padding-bottom:12px;
+    border-radius:0;
   }
   .escena .panel{
     position:relative;
     display:flex;
     align-items:flex-end;
-    min-height:clamp(360px,66svh,540px);
+    min-height:clamp(350px,56svh,480px);
+    scroll-snap-align:start;
     border-radius:clamp(12px,2vw,24px);
   }
   .escena .panel:not(:first-child){visibility:visible}
   .escena .panel img{will-change:auto}
   .escena .panel .cuerpo{position:relative;width:100%}
   .escena .indice{display:none}
+  .servicios-ayuda{display:block;margin-bottom:12px;color:var(--carbon-suave)}
 }
