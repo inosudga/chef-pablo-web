@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap">
 
 
-  <link rel="stylesheet" href="styles.css?v=rotulos-servicios">
+  <link rel="stylesheet" href="styles.css?v=ejemplos-catering">
 </head>
 <body>
 
@@ -47,18 +47,55 @@
   </ul>
 </section>
 
-<section class="servicios" id="servicios" aria-label="Servicios">
+<section class="servicios" id="servicios" tabindex="-1" aria-label="Servicios">
   <p class="servicios-ayuda">Desliza para ver los servicios</p>
   <div class="escena" tabindex="0" role="group" aria-label="Servicios">
     <article class="panel"><img src="img/catering.jpg" alt="Brioches de carne mechada con brotes" style="object-position:center">
-      <div class="cuerpo"><p class="eyebrow">Para celebraciones</p><h2>Catering exclusivo</h2><p class="frase">Bocados preparados al momento, tablas de quesos e ibéricos, servidos en casa, en la villa o en el barco.</p><a class="btn" href="#solicitud">Consultar</a></div></article>
+      <div class="cuerpo"><p class="eyebrow">Para celebraciones</p><h2>Catering exclusivo</h2><p class="frase">Bocados preparados al momento, tablas de quesos e ibéricos, servidos en casa, en la villa o en el barco.</p><div class="acciones-servicio"><a class="btn" href="#solicitud">Consultar</a><button class="btn" type="button" id="alternar-catering" aria-controls="ejemplos-catering" aria-expanded="false">Ejemplos</button></div></div></article>
     <article class="panel"><img src="img/mesa.jpg" alt="Mesa montada con la minuta y la tarjeta de Pablo Sánchez" style="object-position:center 62%">
       <div class="cuerpo"><p class="eyebrow">En tu mesa</p><h2>Cenas privadas</h2><p class="frase">Un menú diseñado para ti, con minuta propia, servicio de sala y la cocina recogida al terminar.</p><a class="btn" href="#solicitud">Consultar</a></div></article>
     <article class="panel"><img src="img/desayunos.jpg" alt="Bandeja de fruta fresca servida en una terraza" style="object-position:center">
-      <div class="cuerpo"><p class="eyebrow">En tu terraza</p><h2>Desayunos</h2><p class="frase">La mañana servida en casa: fruta fresca cortada al momento, bollería recién hecha, huevos al gusto y café.</p><div class="acciones-desayunos"><a class="btn" href="#solicitud">Consultar</a><a class="btn" href="#desayunos">Ver fotos</a></div></div></article>
+      <div class="cuerpo"><p class="eyebrow">En tu terraza</p><h2>Desayunos</h2><p class="frase">La mañana servida en casa: fruta fresca cortada al momento, bollería recién hecha, huevos al gusto y café.</p><div class="acciones-servicio"><a class="btn" href="#solicitud">Consultar</a><a class="btn" href="#desayunos">Ver fotos</a></div></div></article>
     <article class="panel"><img src="img/eventos.jpg" alt="Mesa larga blanca con vistas al mar" style="object-position:center">
       <div class="cuerpo"><p class="eyebrow">Experiencias gastronómicas</p><h2>Eventos a medida</h2><p class="frase">Cumpleaños, aniversarios y encuentros de empresa. Pablo se ocupa del menú, el montaje y el equipo.</p><a class="btn" href="#solicitud">Consultar</a></div></article>
     <nav class="indice" aria-label="Servicios"><button type="button" aria-label="Catering exclusivo">1</button><button type="button" aria-label="Cenas privadas">2</button><button type="button" aria-label="Desayunos">3</button><button type="button" aria-label="Eventos a medida">4</button></nav>
+  </div>
+</section>
+
+<section class="seccion ejemplos-catering" id="ejemplos-catering" aria-labelledby="titulo-ejemplos-catering" hidden>
+  <div class="wrap">
+    <h2 id="titulo-ejemplos-catering" tabindex="-1">Ejemplos de catering</h2>
+    <div class="collages-catering">
+      <figure>
+        <div class="collage-catering">
+          <img src="img/catering/tabla-aperitivos.jpg" alt="Tabla de embutidos y quesos con uvas y frutos rojos" loading="lazy" decoding="async">
+          <img src="img/catering/tabla-quesos.jpg" alt="Tablas de quesos e ibéricos en una mesa de catering" loading="lazy" decoding="async">
+        </div>
+        <figcaption>Tablas de quesos e ibéricos</figcaption>
+      </figure>
+      <figure>
+        <div class="collage-catering">
+          <img src="img/catering/croissants.jpg" alt="Croissants salados rellenos con brotes" loading="lazy" decoding="async">
+          <img src="img/catering/mini-hamburguesas.jpg" alt="Mini hamburguesas en pan brioche" loading="lazy" decoding="async">
+        </div>
+        <figcaption>Croissants y mini hamburguesas</figcaption>
+      </figure>
+      <figure>
+        <div class="collage-catering">
+          <img src="img/catering/brioches-detalle.jpg" alt="Primer plano de brioches rellenos de carne mechada" loading="lazy" decoding="async">
+          <img src="img/catering/bandeja-brioches.jpg" alt="Bandeja de brioches con aperitivos y guacamole" loading="lazy" decoding="async">
+        </div>
+        <figcaption>Brioches de carne mechada</figcaption>
+      </figure>
+      <figure>
+        <div class="collage-catering">
+          <img src="img/catering/aperitivos-y-flores.jpg" alt="Croissants salados junto a un arreglo floral" loading="lazy" decoding="async">
+          <img src="img/catering/mesa-catering.jpg" alt="Mesa de catering con vasitos, brioches y tablas" loading="lazy" decoding="async">
+        </div>
+        <figcaption>Montaje de la mesa</figcaption>
+      </figure>
+    </div>
+    <button class="btn oscuro" id="cerrar-catering" type="button">Ocultar ejemplos</button>
   </div>
 </section>
 
@@ -216,6 +253,6 @@
   <a class="pie-chat" id="wa-chat" target="_blank" rel="noopener" href="#">Pedir presupuesto por WhatsApp</a>
 </section>
 
-<script src="site.js?v=collage-arroces" defer></script>
+<script src="site.js?v=ejemplos-catering" defer></script>
 </body>
 </html>

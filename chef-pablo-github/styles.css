@@ -213,7 +213,7 @@ footer .firma:hover{color:var(--crema)}
   .revela{clip-path:none}
 }
 
-.acciones-desayunos{
+.acciones-servicio{
   display:flex;
   flex-wrap:wrap;
   gap:10px;
@@ -294,12 +294,12 @@ footer .firma:hover{color:var(--crema)}
 .portada,.escena,.portada-arroces,.banda,.sobre img,.fotos-desayunos img,.paellas-fotos img{
   border-radius:clamp(12px,2vw,24px);
 }
-.portada-arroces button{
+.portada-arroces button,.acciones-servicio button{
   background:transparent;
   color:inherit;
   cursor:pointer;
 }
-.portada-arroces button:hover{
+.portada-arroces button:hover,.acciones-servicio button:hover{
   background:var(--crema);
   color:var(--carbon);
 }
@@ -373,4 +373,36 @@ footer .firma:hover{color:var(--crema)}
   padding:.65em 0;
   border-top:1px solid var(--linea);
   font:400 clamp(1.12rem,2vw,1.44rem)/1.35 var(--display);
+}
+
+.ejemplos-catering{
+  scroll-margin-top:76px;
+  padding-block:clamp(50px,7vw,88px) 0;
+}
+.collages-catering{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(20px,4vw,36px);
+  margin-block:24px;
+}
+.collages-catering figure{margin:0}
+.collage-catering{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:5px;
+  border-radius:clamp(12px,2vw,24px);
+  overflow:hidden;
+}
+.collage-catering img{
+  display:block;
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+}
+.collages-catering figcaption{
+  padding-top:9px;
+  color:var(--carbon-suave);
+}
+@media(max-width:640px){
+  .collages-catering{grid-template-columns:1fr}
 }

@@ -7,6 +7,21 @@ var LANG = (function(){
   return l;
 })();
 var EN = {
+  'Ejemplos': 'Examples',
+  'Ejemplos de catering': 'Catering examples',
+  'Ocultar ejemplos': 'Hide examples',
+  'Tablas de quesos e ibéricos': 'Cheese and Iberian charcuterie boards',
+  'Tabla de embutidos y quesos con uvas y frutos rojos': 'Charcuterie and cheese board with grapes and berries',
+  'Tablas de quesos e ibéricos en una mesa de catering': 'Cheese and Iberian charcuterie boards on a catering table',
+  'Croissants y mini hamburguesas': 'Croissants and sliders',
+  'Croissants salados rellenos con brotes': 'Filled savoury croissants with microgreens',
+  'Mini hamburguesas en pan brioche': 'Sliders in brioche buns',
+  'Brioches de carne mechada': 'Pulled meat brioche rolls',
+  'Primer plano de brioches rellenos de carne mechada': 'Close-up of brioche rolls filled with pulled meat',
+  'Bandeja de brioches con aperitivos y guacamole': 'Tray of brioche rolls with snacks and guacamole',
+  'Montaje de la mesa': 'Catering table setup',
+  'Croissants salados junto a un arreglo floral': 'Savoury croissants beside a floral arrangement',
+  'Mesa de catering con vasitos, brioches y tablas': 'Catering table with small glasses, brioche rolls and sharing boards',
   'Collage de gambas rojas, vieiras, arroz y carne marmoleada preparados para las paellas': 'Collage of red prawns, scallops, rice and marbled beef prepared for the paellas',
   'Pablo cocina cada arroz delante de los invitados, con productos de máxima calidad. Es el momento que todos recuerdan de la celebración.': 'Pablo cooks each paella in front of the guests using the finest ingredients. It is the moment everyone remembers from the celebration.',
   'Desliza para ver los servicios': 'Swipe to see the services',
@@ -374,4 +389,28 @@ chat.addEventListener('keydown', function(e){ if (e.key === 'Escape') cerrar(); 
   galeria.addEventListener('scroll', actualizarBotones, {passive:true});
   window.addEventListener('resize', actualizarBotones);
   actualizarBotones();
+})();
+
+(function(){
+  var boton = document.getElementById('alternar-catering');
+  var galeria = document.getElementById('ejemplos-catering');
+  var titulo = document.getElementById('titulo-ejemplos-catering');
+  var cerrar = document.getElementById('cerrar-catering');
+
+  function alternarEjemplos(){
+    var abrir = galeria.hidden;
+    galeria.hidden = !abrir;
+    boton.setAttribute('aria-expanded', String(abrir));
+    if (abrir) {
+      titulo.focus({preventScroll:true});
+      galeria.scrollIntoView({block:'start'});
+    } else {
+      var servicios = document.getElementById('servicios');
+      servicios.focus({preventScroll:true});
+      servicios.scrollIntoView({block:'start'});
+    }
+  }
+
+  boton.addEventListener('click', alternarEjemplos);
+  cerrar.addEventListener('click', alternarEjemplos);
 })();
