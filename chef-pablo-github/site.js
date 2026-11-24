@@ -131,9 +131,10 @@ function t(s){ return LANG === 'en' && EN[s] ? EN[s] : s; }
   function pintar(){
     pend = false;
     var y = window.scrollY, vh = window.innerHeight, ph = portada.offsetHeight;
+    var tarjetas = pantallaCompacta.matches || quieto;
     var r = sec.getBoundingClientRect();
-    bar.classList.toggle('solida', y > ph - 70 && !(r.top < 60 && r.bottom > 60));
-    if(!quieto && y < ph){
+    bar.classList.toggle('solida', y > ph - 70 && (tarjetas || !(r.top < 60 && r.bottom > 60)));
+    if(!tarjetas && y < ph){
       var t = y / ph;
       foto.style.transform = 'translateY(' + (y * 0.28) + 'px) scale(' + (1 + t * 0.12) + ')';
       centro.style.transform = 'translateY(' + (y * -0.18) + 'px)';
@@ -154,7 +155,7 @@ function t(s){ return LANG === 'en' && EN[s] ? EN[s] : s; }
     if (cuadro.progreso === a && cuadro.fundido === fundido) return;
     cuadro.progreso = a;
     cuadro.fundido = fundido;
-    panel.style.opacity = fundido ? a : '';
+    panel.style.opacity = '';
     panel.style.clipPath = fundido || a === 1 ? '' : 'inset(' + ((1 - a) * 100) + '% 0 0 0)';
     cuadro.imagen.style.transform = fundido || a === 1 ? '' : 'scale(' + (1.1 - 0.1 * a) + ')';
   });

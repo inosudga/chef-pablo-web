@@ -251,7 +251,7 @@ footer .firma:hover{color:var(--crema)}
   }
 }
 
-.servicios-linea a{color:inherit;text-underline-offset:.28em}
+.servicios-linea a{color:inherit;text-decoration:none}
 .portada-arroces{position:relative;min-height:clamp(390px,65svh,610px);color:var(--crema);background:var(--carbon)}
 #paellas{scroll-margin-top:64px;padding-block:clamp(32px,6vw,70px)}
 #paellas .cabecera{margin-bottom:clamp(18px,3vw,30px)}
@@ -314,3 +314,30 @@ footer .firma:hover{color:var(--crema)}
 }
 .zona-servicio h2{font-size:clamp(1.65rem,3.2vw,2.5rem)}
 .zona-servicio p{margin-top:.6rem;color:var(--carbon-suave)}
+
+@media (max-width:760px), (pointer:coarse), (prefers-reduced-motion:reduce){
+  .portada .foto,.portada #centroPortada{transform:none!important}
+  .servicios{
+    height:auto;
+    background:var(--crema);
+    padding:clamp(32px,7vw,64px) var(--gx-r) 0 var(--gx-l);
+  }
+  .escena{
+    position:static;
+    height:auto;
+    display:grid;
+    gap:clamp(20px,5vw,36px);
+    overflow:visible;
+  }
+  .escena .panel{
+    position:relative;
+    display:flex;
+    align-items:flex-end;
+    min-height:clamp(360px,66svh,540px);
+    border-radius:clamp(12px,2vw,24px);
+  }
+  .escena .panel:not(:first-child){visibility:visible}
+  .escena .panel img{will-change:auto}
+  .escena .panel .cuerpo{position:relative;width:100%}
+  .escena .indice{display:none}
+}
