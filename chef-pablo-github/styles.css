@@ -71,7 +71,15 @@ a{color:inherit}
 .panel::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,17,13,.78),rgba(20,17,13,.25) 62%,rgba(20,17,13,.1)),linear-gradient(0deg,rgba(20,17,13,.7),rgba(20,17,13,0) 45%)}
 .panel .cuerpo{position:absolute;z-index:2;left:0;right:0;bottom:0;max-width:1280px;margin:0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:clamp(12px,2vh,22px);
   padding:0 calc(var(--gx-r) + 56px) calc(clamp(40px,9vh,96px) + env(safe-area-inset-bottom,0px)) var(--gx-l)}
-.panel .eyebrow{color:var(--oliva-claro)}
+.panel .eyebrow{
+  background:var(--carbon);
+  color:var(--crema);
+  font:500 .875rem/1.4 var(--texto);
+  letter-spacing:.12em;
+  padding:.42em .72em;
+  border-radius:5px;
+  max-width:100%;
+}
 .panel h2{font-size:clamp(2.6rem,9vw,7rem);line-height:.98;font-weight:400}
 .panel p.frase{max-width:27em;font-size:clamp(1rem,1.5vw,1.2rem);color:var(--crema)}
 .panel .aviso{position:absolute;z-index:2;right:var(--gx-r);top:calc(74px + env(safe-area-inset-top,0px));font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;background:var(--velo);padding:.4em .8em}
