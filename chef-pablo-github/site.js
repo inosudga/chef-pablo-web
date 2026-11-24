@@ -7,6 +7,7 @@ var LANG = (function(){
   return l;
 })();
 var EN = {
+  'Collage de gambas rojas, vieiras, arroz y carne marmoleada preparados para las paellas': 'Collage of red prawns, scallops, rice and marbled beef prepared for the paellas',
   'Pablo cocina cada arroz delante de los invitados, con productos de máxima calidad. Es el momento que todos recuerdan de la celebración.': 'Pablo cooks each paella in front of the guests using the finest ingredients. It is the moment everyone remembers from the celebration.',
   'Desliza para ver los servicios': 'Swipe to see the services',
   'Marbella, Málaga y alrededores': 'Marbella, Málaga and surrounding areas',
