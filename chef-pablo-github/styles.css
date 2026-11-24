@@ -406,3 +406,13 @@ footer .firma:hover{color:var(--crema)}
 @media(max-width:640px){
   .collages-catering{grid-template-columns:1fr}
 }
+
+@media (max-width:760px), (pointer:coarse), (prefers-reduced-motion:reduce){
+  .escena .panel-catering .cuerpo{
+    padding:28px clamp(16px,5vw,28px);
+  }
+  .panel-catering .acciones-servicio .btn{
+    padding:.85em 1em;
+    letter-spacing:.15em;
+  }
+}
