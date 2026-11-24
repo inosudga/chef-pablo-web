@@ -352,3 +352,17 @@ footer .firma:hover{color:var(--crema)}
   .escena .indice{display:none}
   .servicios-ayuda{display:block;margin-bottom:12px;color:var(--carbon-suave)}
 }
+
+.especialidad-arroces h2{font-style:italic}
+.especialidad-arroces .btn{align-self:flex-start}
+.carta-arroces{
+  margin:0;
+  padding:0;
+  list-style:none;
+  border-bottom:1px solid var(--linea);
+}
+.carta-arroces li{
+  padding:.65em 0;
+  border-top:1px solid var(--linea);
+  font:400 clamp(1.12rem,2vw,1.44rem)/1.35 var(--display);
+}
