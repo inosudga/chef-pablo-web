@@ -7,6 +7,8 @@ var LANG = (function(){
   return l;
 })();
 var EN = {
+  'Marbella, Málaga y alrededores': 'Marbella, Málaga and surrounding areas',
+  'Pablo cocina en tu casa, villa o terraza.': 'Pablo cooks in your home, villa or on your terrace.',
   'Ocultar paellas': 'Hide paellas',
   'Ver paellas': 'See paellas',
   'Selección de paellas': 'Paella selection',
@@ -116,7 +118,12 @@ function t(s){ return LANG === 'en' && EN[s] ? EN[s] : s; }
   var foto = document.getElementById('fotoPortada');
   var centro = document.getElementById('centroPortada');
   var sec = document.getElementById('servicios');
-  var paneles = [].slice.call(sec.querySelectorAll('.panel'));
+  var escena = sec.querySelector('.escena');
+  var pantallaCompacta = matchMedia('(max-width: 760px), (pointer: coarse)');
+  var paneles = [].slice.call(escena.querySelectorAll('.panel'));
+  var cuadros = paneles.map(function(panel){
+    return {imagen:panel.firstElementChild, progreso:null, visible:null, fundido:null};
+  });
   var puntos = [].slice.call(sec.querySelectorAll('.indice button'));
   var N = paneles.length, pend = false;
   var rev = [].slice.call(document.querySelectorAll('.revela'));
@@ -132,14 +139,25 @@ function t(s){ return LANG === 'en' && EN[s] ? EN[s] : s; }
       centro.style.transform = 'translateY(' + (y * -0.18) + 'px)';
       centro.style.opacity = Math.max(0, 1 - t * 1.7);
     }
-    var f = lim(-r.top / (sec.offsetHeight - vh)) * (N - 1);
-    paneles.forEach(function(p, k){
-      var a = k === 0 ? 1 : lim((f - (k - 1) - 0.2) / 0.6);
-      p.style.clipPath = 'inset(' + ((1 - a) * 100) + '% 0 0 0)';
-      var img = p.firstElementChild;
-      if(!quieto) img.style.transform = 'scale(' + (1.14 - 0.14 * lim(f - k + 1)) + ')';
-      p.querySelector('.cuerpo').style.transform = 'translateY(' + ((1 - a) * 60) + 'px)';
-    });
+  var recorrido = sec.offsetHeight - escena.offsetHeight;
+  var f = lim(-r.top / recorrido) * (N - 1);
+  var fundido = pantallaCompacta.matches || quieto;
+  paneles.forEach(function(panel, k){
+    var cuadro = cuadros[k];
+    var a = k === 0 || f >= k - 0.2 ? 1 : lim((f - k + 0.8) / 0.6);
+    var visible = a > 0 && (k + 1 === N || f < (k + 1) - 0.2);
+    if (cuadro.visible !== visible) {
+      panel.style.visibility = visible ? 'visible' : 'hidden';
+      panel.inert = !visible;
+      cuadro.visible = visible;
+    }
+    if (cuadro.progreso === a && cuadro.fundido === fundido) return;
+    cuadro.progreso = a;
+    cuadro.fundido = fundido;
+    panel.style.opacity = fundido ? a : '';
+    panel.style.clipPath = fundido || a === 1 ? '' : 'inset(' + ((1 - a) * 100) + '% 0 0 0)';
+    cuadro.imagen.style.transform = fundido || a === 1 ? '' : 'scale(' + (1.1 - 0.1 * a) + ')';
+  });
     rev = rev.filter(function(el){
       if(quieto || el.getBoundingClientRect().top < vh * 0.85){ el.classList.add('dentro'); return false; }
       return true;
@@ -153,7 +171,7 @@ function t(s){ return LANG === 'en' && EN[s] ? EN[s] : s; }
   pintar();
   puntos.forEach(function(b, k){
     b.addEventListener('click', function(){
-      var rec = sec.offsetHeight - window.innerHeight;
+      var rec = sec.offsetHeight - escena.offsetHeight;
       var top = sec.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({top: top + rec * (k / (N - 1)), behavior: quieto ? 'auto' : 'smooth'});
     });

@@ -63,9 +63,10 @@ a{color:inherit}
 .experiencia span{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;font-weight:400;color:var(--carbon-suave);line-height:1.7}
 
 /* Servicios a pantalla completa */
-.servicios{height:500vh;position:relative;background:var(--carbon)}
-.escena{position:sticky;top:0;height:100svh;overflow:hidden;color:var(--crema)}
-.panel{position:absolute;inset:0;overflow:hidden;will-change:clip-path}
+.servicios{height:500svh;position:relative;background:var(--carbon)}
+.escena{position:sticky;top:0;height:100svh;overflow:hidden;isolation:isolate;color:var(--crema)}
+.panel{position:absolute;inset:0;overflow:hidden}
+.escena .panel:not(:first-child){visibility:hidden}
 .panel img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;will-change:transform}
 .panel::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,17,13,.78),rgba(20,17,13,.25) 62%,rgba(20,17,13,.1)),linear-gradient(0deg,rgba(20,17,13,.7),rgba(20,17,13,0) 45%)}
 .panel .cuerpo{position:absolute;z-index:2;left:0;right:0;bottom:0;max-width:1280px;margin:0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:clamp(12px,2vh,22px);
@@ -282,7 +283,7 @@ footer .firma:hover{color:var(--crema)}
 }
 
 /* Fotografías y portadas */
-.portada,.panel,.banda,.sobre img,.fotos-desayunos img,.paellas-fotos img{
+.portada,.escena,.portada-arroces,.banda,.sobre img,.fotos-desayunos img,.paellas-fotos img{
   border-radius:clamp(12px,2vw,24px);
 }
 .portada-arroces button{
@@ -294,3 +295,22 @@ footer .firma:hover{color:var(--crema)}
   background:var(--crema);
   color:var(--carbon);
 }
+
+#arroces{
+  max-width:1280px;
+  margin:0 auto clamp(64px,10vw,128px);
+  padding-inline:var(--gx-l) var(--gx-r);
+}
+#arroces .wrap{width:100%;padding-inline:0}
+#arroces #paellas{padding-bottom:0}
+@media (max-width:760px){
+  .escena .panel img{will-change:auto}
+}
+
+.zona-servicio{
+  padding-block:clamp(32px,6vw,66px);
+  background:var(--crema-2);
+  text-align:center;
+}
+.zona-servicio h2{font-size:clamp(1.65rem,3.2vw,2.5rem)}
+.zona-servicio p{margin-top:.6rem;color:var(--carbon-suave)}
