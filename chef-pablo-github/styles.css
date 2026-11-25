@@ -305,11 +305,10 @@ footer .firma:hover{color:var(--crema)}
   color:inherit;
   cursor:pointer;
 }
-@media (hover:hover) and (pointer:fine){
-  .portada-arroces button:hover,.escena .acciones-servicio button:hover{
-    background:var(--crema);
-    color:var(--carbon);
-  }
+.portada-arroces button[aria-expanded="true"],
+.escena .acciones-servicio button[aria-expanded="true"]{
+  background:var(--crema);
+  color:var(--carbon);
 }
 
 #arroces{
