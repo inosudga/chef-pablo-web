@@ -35,10 +35,14 @@ a{color:inherit}
 .btn{display:inline-block;font-family:var(--texto);font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;font-weight:400;text-decoration:none;
   padding:.95em 1.7em;border:1px solid currentColor;background:none;color:inherit;cursor:pointer;transition:background .3s,color .3s}
 .bar .btn{padding:.7em 1.2em;font-size:.66rem}
-.btn:hover{background:var(--crema);color:var(--carbon)}
-.bar.solida .btn:hover,.btn.oscuro:hover{background:var(--carbon);color:var(--crema)}
+@media (hover:hover) and (pointer:fine){
+  .btn:hover{background:var(--crema);color:var(--carbon)}
+  .bar.solida .btn:hover,.btn.oscuro:hover{background:var(--carbon);color:var(--crema)}
+}
 .btn.lleno{background:var(--carbon);color:var(--crema);border-color:var(--carbon)}
-.btn.lleno:hover{background:var(--oliva);border-color:var(--oliva);color:var(--crema)}
+@media (hover:hover) and (pointer:fine){
+  .btn.lleno:hover{background:var(--oliva);border-color:var(--oliva);color:var(--crema)}
+}
 
 /* Portada */
 .portada{position:relative;height:100svh;min-height:560px;overflow:hidden;background:var(--carbon);color:var(--crema)}
@@ -136,7 +140,9 @@ a{color:inherit}
 .minuta dd.vacio{opacity:.3}
 .minuta .nota-m{font-size:.8rem;color:var(--carbon-suave);max-width:22em}
 .btn.wa{background:var(--oliva);border-color:var(--oliva);color:var(--crema);position:relative;z-index:1}
-.btn.wa:hover{background:var(--carbon);border-color:var(--carbon);color:var(--crema)}
+@media (hover:hover) and (pointer:fine){
+  .btn.wa:hover{background:var(--carbon);border-color:var(--carbon);color:var(--crema)}
+}
 
 .cierre{text-align:center}
 .cierre .wrap{display:flex;flex-direction:column;align-items:center;gap:22px}
@@ -299,9 +305,11 @@ footer .firma:hover{color:var(--crema)}
   color:inherit;
   cursor:pointer;
 }
-.portada-arroces button:hover,.escena .acciones-servicio button:hover{
-  background:var(--crema);
-  color:var(--carbon);
+@media (hover:hover) and (pointer:fine){
+  .portada-arroces button:hover,.escena .acciones-servicio button:hover{
+    background:var(--crema);
+    color:var(--carbon);
+  }
 }
 
 #arroces{
