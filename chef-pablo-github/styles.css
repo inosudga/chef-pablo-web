@@ -294,12 +294,12 @@ footer .firma:hover{color:var(--crema)}
 .portada,.escena,.portada-arroces,.banda,.sobre img,.fotos-desayunos img,.paellas-fotos img{
   border-radius:clamp(12px,2vw,24px);
 }
-.portada-arroces button,.acciones-servicio button{
+.portada-arroces button,.escena .acciones-servicio button{
   background:transparent;
   color:inherit;
   cursor:pointer;
 }
-.portada-arroces button:hover,.acciones-servicio button:hover{
+.portada-arroces button:hover,.escena .acciones-servicio button:hover{
   background:var(--crema);
   color:var(--carbon);
 }
@@ -363,17 +363,6 @@ footer .firma:hover{color:var(--crema)}
 
 .especialidad-arroces h2{font-style:italic}
 .especialidad-arroces .btn{align-self:flex-start}
-.carta-arroces{
-  margin:0;
-  padding:0;
-  list-style:none;
-  border-bottom:1px solid var(--linea);
-}
-.carta-arroces li{
-  padding:.65em 0;
-  border-top:1px solid var(--linea);
-  font:400 clamp(1.12rem,2vw,1.44rem)/1.35 var(--display);
-}
 
 .ejemplos-catering{
   scroll-margin-top:76px;

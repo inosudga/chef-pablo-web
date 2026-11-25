@@ -26,7 +26,7 @@ var EN = {
   'Pablo cocina cada arroz delante de los invitados, con productos de máxima calidad. Es el momento que todos recuerdan de la celebración.': 'Pablo cooks each paella in front of the guests using the finest ingredients. It is the moment everyone remembers from the celebration.',
   'Desliza para ver los servicios': 'Swipe to see the services',
   'Marbella, Málaga y alrededores': 'Marbella, Málaga and surrounding areas',
-  'Pablo cocina en tu casa, villa o terraza.': 'Pablo cooks in your home, villa or on your terrace.',
+  'Pablo cocina en tu casa, villa o finca.': 'Pablo cooks at your home, villa or country estate.',
   'Ocultar paellas': 'Hide paellas',
   'Ver paellas': 'See paellas',
   'Selección de paellas': 'Paella selection',
@@ -40,13 +40,12 @@ var EN = {
   'Abrir en WhatsApp Web': 'Open in WhatsApp Web',
   'Completa el servicio, los comensales, el lugar y la fecha para enviar tu propuesta.': 'Choose the service, guests, venue and date to send your request.',
   'Desayunos a domicilio': 'Breakfast at home',
-  'Ver fotos': 'See photos',
   'Huevos pochados con salmón': 'Poached eggs with salmon',
-  'Bol de fruta fresca': 'Fresh fruit bowl',
+  'Bol de yogur griego con fruta fresca': 'Greek yoghurt bowl with fresh fruit',
   'Croissant de jamón y queso': 'Ham and cheese croissant',
   'Tostada de aguacate y tomate': 'Avocado and tomato toast',
-  'Avena con plátano y fresas': 'Oats with banana and strawberries',
-  'Hojaldre dorado': 'Golden puff pastry',
+  'Porridge con fruta y avena': 'Oat porridge with fruit',
+  'Napolitana de chocolate': 'Chocolate pastry',
   'Pablo Sánchez · Chef Privado en Marbella y Málaga': 'Pablo Sánchez · Private Chef in Marbella and Málaga',
   'Chef privado en Marbella y Málaga. Arroces, catering exclusivo, cenas privadas, desayunos y eventos a medida.': 'Private chef in Marbella and Málaga. Paellas, exclusive catering, private dinners, breakfasts and bespoke events.',
   'Pablo Sánchez, inicio': 'Pablo Sánchez, home', 'Idioma': 'Language',
@@ -89,8 +88,6 @@ var EN = {
   'Vieiras en su concha preparadas sobre la paellera antes de cocinar': 'Scallops in their shells on the paella pan, ready to cook',
   'Especialista en arroces': 'Paella specialist',
   'El lujo también se sirve en paella.': 'Luxury can be served in a paella too.',
-  'Presa ibérica, foie y setas de temporada': 'Iberian pork, foie and seasonal mushrooms',
-  'Arroz negro con carabineros': 'Black rice with red prawns', 'Vieiras y carabinero': 'Scallops and red prawn',
   'Pide tu arroz': 'Order your paella',
   'Setas, judías verdes, tomates cherry y romero sobre una tabla, junto a los cucharones y cuchillos del chef': 'Mushrooms, green beans, cherry tomatoes and rosemary on a board, next to the chef’s ladles and knives',
   'Sobre Pablo': 'About Pablo', 'El restaurante va a tu casa.': 'The restaurant comes to your home.',
@@ -392,25 +389,35 @@ chat.addEventListener('keydown', function(e){ if (e.key === 'Escape') cerrar(); 
 })();
 
 (function(){
-  var boton = document.getElementById('alternar-catering');
-  var galeria = document.getElementById('ejemplos-catering');
-  var titulo = document.getElementById('titulo-ejemplos-catering');
-  var cerrar = document.getElementById('cerrar-catering');
+  function prepararEjemplos(servicio, galeriaId, tituloId){
+    var boton = document.getElementById('alternar-' + servicio);
+    var galeria = document.getElementById(galeriaId);
+    var titulo = document.getElementById(tituloId);
+    var cerrar = document.getElementById('cerrar-' + servicio);
 
-  function alternarEjemplos(){
-    var abrir = galeria.hidden;
-    galeria.hidden = !abrir;
-    boton.setAttribute('aria-expanded', String(abrir));
-    if (abrir) {
-      titulo.focus({preventScroll:true});
-      galeria.scrollIntoView({block:'start'});
-    } else {
-      var servicios = document.getElementById('servicios');
-      servicios.focus({preventScroll:true});
-      servicios.scrollIntoView({block:'start'});
+    function mostrarEjemplos(abrir){
+      galeria.hidden = !abrir;
+      boton.setAttribute('aria-expanded', String(abrir));
+      if (abrir) {
+        titulo.focus({preventScroll:true});
+        galeria.scrollIntoView({block:'start'});
+      } else {
+        var servicios = document.getElementById('servicios');
+        servicios.focus({preventScroll:true});
+        servicios.scrollIntoView({block:'start'});
+      }
     }
+
+    boton.addEventListener('click', function(){ mostrarEjemplos(galeria.hidden); });
+    cerrar.addEventListener('click', function(){ mostrarEjemplos(false); });
+    return mostrarEjemplos;
   }
 
-  boton.addEventListener('click', alternarEjemplos);
-  cerrar.addEventListener('click', alternarEjemplos);
+  prepararEjemplos('catering', 'ejemplos-catering', 'titulo-ejemplos-catering');
+  var mostrarDesayunos = prepararEjemplos('desayunos', 'desayunos', 'titulo-desayunos');
+  function abrirDesdeEnlace(){
+    if (location.hash === '#desayunos') mostrarDesayunos(true);
+  }
+  window.addEventListener('hashchange', abrirDesdeEnlace);
+  abrirDesdeEnlace();
 })();

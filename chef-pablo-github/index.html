@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap">
 
 
-  <link rel="stylesheet" href="styles.css?v=altura-catering">
+  <link rel="stylesheet" href="styles.css?v=sin-lista-arroces">
 </head>
 <body>
 
@@ -55,7 +55,7 @@
     <article class="panel"><img src="img/mesa.jpg" alt="Mesa montada con la minuta y la tarjeta de Pablo Sánchez" style="object-position:center 62%">
       <div class="cuerpo"><p class="eyebrow">En tu mesa</p><h2>Cenas privadas</h2><p class="frase">Un menú diseñado para ti, con minuta propia, servicio de sala y la cocina recogida al terminar.</p><a class="btn" href="#solicitud">Consultar</a></div></article>
     <article class="panel"><img src="img/desayunos.jpg" alt="Bandeja de fruta fresca servida en una terraza" style="object-position:center">
-      <div class="cuerpo"><p class="eyebrow">En tu terraza</p><h2>Desayunos</h2><p class="frase">La mañana servida en casa: fruta fresca cortada al momento, bollería recién hecha, huevos al gusto y café.</p><div class="acciones-servicio"><a class="btn" href="#solicitud">Consultar</a><a class="btn" href="#desayunos">Ver fotos</a></div></div></article>
+      <div class="cuerpo"><p class="eyebrow">En tu terraza</p><h2>Desayunos</h2><p class="frase">La mañana servida en casa: fruta fresca cortada al momento, bollería recién hecha, huevos al gusto y café.</p><div class="acciones-servicio"><a class="btn" href="#solicitud">Consultar</a><button class="btn" type="button" id="alternar-desayunos" aria-controls="desayunos" aria-expanded="false">Ejemplos</button></div></div></article>
     <article class="panel"><img src="img/eventos.jpg" alt="Mesa larga blanca con vistas al mar" style="object-position:center">
       <div class="cuerpo"><p class="eyebrow">Experiencias gastronómicas</p><h2>Eventos a medida</h2><p class="frase">Cumpleaños, aniversarios y encuentros de empresa. Pablo se ocupa del menú, el montaje y el equipo.</p><a class="btn" href="#solicitud">Consultar</a></div></article>
     <nav class="indice" aria-label="Servicios"><button type="button" aria-label="Catering exclusivo">1</button><button type="button" aria-label="Cenas privadas">2</button><button type="button" aria-label="Desayunos">3</button><button type="button" aria-label="Eventos a medida">4</button></nav>
@@ -95,7 +95,7 @@
 <section class="zona-servicio" aria-labelledby="titulo-zona-servicio">
   <div class="wrap">
     <h2 id="titulo-zona-servicio">Marbella, Málaga y alrededores</h2>
-    <p>Pablo cocina en tu casa, villa o terraza.</p>
+    <p>Pablo cocina en tu casa, villa o finca.</p>
   </div>
 </section>
 
@@ -124,17 +124,17 @@
   </div>
 </section>
 
-<section class="seccion galeria-desayunos" id="desayunos" aria-labelledby="titulo-desayunos">
+<section class="seccion galeria-desayunos" id="desayunos" aria-labelledby="titulo-desayunos" hidden>
   <div class="wrap">
-    <h2 id="titulo-desayunos">Desayunos a domicilio</h2>
+    <h2 id="titulo-desayunos" tabindex="-1">Desayunos a domicilio</h2>
     <div class="fotos-desayunos">
       <figure>
         <img src="img/desayunos/huevos-salmon.jpg" width="941" height="1672" loading="lazy" decoding="async" alt="Huevos pochados con salmón">
         <figcaption>Huevos pochados con salmón</figcaption>
       </figure>
       <figure>
-        <img src="img/desayunos/fruta-fresca.jpg" width="941" height="1672" loading="lazy" decoding="async" alt="Bol de fruta fresca">
-        <figcaption>Bol de fruta fresca</figcaption>
+        <img src="img/desayunos/fruta-fresca.jpg" width="941" height="1672" loading="lazy" decoding="async" alt="Bol de yogur griego con fruta fresca">
+        <figcaption>Bol de yogur griego con fruta fresca</figcaption>
       </figure>
       <figure>
         <img src="img/desayunos/croissant-jamon.jpg" width="941" height="1672" loading="lazy" decoding="async" alt="Croissant de jamón y queso">
@@ -145,15 +145,18 @@
         <figcaption>Tostada de aguacate y tomate</figcaption>
       </figure>
       <figure>
-        <img src="img/desayunos/avena-fruta.jpg" width="941" height="1672" loading="lazy" decoding="async" alt="Avena con plátano y fresas">
-        <figcaption>Avena con plátano y fresas</figcaption>
+        <img src="img/desayunos/avena-fruta.jpg" width="941" height="1672" loading="lazy" decoding="async" alt="Porridge con fruta y avena">
+        <figcaption>Porridge con fruta y avena</figcaption>
       </figure>
       <figure>
-        <img src="img/desayunos/hojaldre.jpg" width="941" height="1672" loading="lazy" decoding="async" alt="Hojaldre dorado">
-        <figcaption>Hojaldre dorado</figcaption>
+        <img src="img/desayunos/hojaldre.jpg" width="941" height="1672" loading="lazy" decoding="async" alt="Napolitana de chocolate">
+        <figcaption>Napolitana de chocolate</figcaption>
       </figure>
     </div>
-    <a class="btn oscuro" href="#solicitud">Solicitar propuesta</a>
+    <div class="acciones-servicio">
+      <a class="btn oscuro" href="#solicitud">Solicitar propuesta</a>
+      <button class="btn oscuro" id="cerrar-desayunos" type="button">Ocultar ejemplos</button>
+    </div>
   </div>
 </section>
 
@@ -193,12 +196,7 @@
       <p class="eyebrow">Especialista en arroces</p>
       <h2 id="titulo-especialidad-arroces">El lujo también se sirve en paella.</h2>
       <p>Pablo cocina cada arroz delante de los invitados, con productos de máxima calidad. Es el momento que todos recuerdan de la celebración.</p>
-      <ul class="carta-arroces">
-        <li>Presa ibérica, foie y setas de temporada</li>
-        <li>Arroz negro con carabineros</li>
-        <li>Vieiras y carabinero</li>
-      </ul>
-      <a class="btn oscuro" href="#solicitud">Pide tu arroz</a>
+        <a class="btn oscuro" href="#solicitud">Pide tu arroz</a>
     </div>
   </div>
 </section>
@@ -246,6 +244,6 @@
   <a class="pie-chat" id="wa-chat" target="_blank" rel="noopener" href="#">Pedir presupuesto por WhatsApp</a>
 </section>
 
-<script src="site.js?v=ejemplos-catering" defer></script>
+<script src="site.js?v=sin-lista-arroces" defer></script>
 </body>
 </html>
