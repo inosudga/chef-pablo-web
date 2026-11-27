@@ -8,6 +8,7 @@ var LANG = (function(){
 })();
 var EN = {
   'Ejemplos': 'Examples',
+  'Fotos': 'Photos',
   'Ejemplos de catering': 'Catering examples',
   'Ocultar ejemplos': 'Hide examples',
   'Tablas de quesos e ibéricos': 'Cheese and Iberian charcuterie boards',
@@ -16,7 +17,7 @@ var EN = {
   'Croissants y mini hamburguesas': 'Croissants and sliders',
   'Croissants salados rellenos con brotes': 'Filled savoury croissants with microgreens',
   'Mini hamburguesas en pan brioche': 'Sliders in brioche buns',
-  'Brioches de carne mechada': 'Pulled meat brioche rolls',
+  'Brioche de carrillera y pollo asado': 'Braised cheek and roast chicken brioche',
   'Primer plano de brioches rellenos de carne mechada': 'Close-up of brioche rolls filled with pulled meat',
   'Bandeja de brioches con aperitivos y guacamole': 'Tray of brioche rolls with snacks and guacamole',
   'Montaje de la mesa': 'Catering table setup',
@@ -50,7 +51,7 @@ var EN = {
   'Chef privado en Marbella y Málaga. Arroces, catering exclusivo, cenas privadas, desayunos y eventos a medida.': 'Private chef in Marbella and Málaga. Paellas, exclusive catering, private dinners, breakfasts and bespoke events.',
   'Pablo Sánchez, inicio': 'Pablo Sánchez, home', 'Idioma': 'Language',
   'Solicitar propuesta': 'Request a proposal',
-  'Paella de presa ibérica, foie y setas recién terminada al aire libre': 'Iberian pork, foie and mushroom paella, just finished outdoors',
+  'Pablo Sánchez emplatando en una mesa': 'Pablo Sánchez plating a dish at a table',
   'PS, Chef Privado': 'PS, Private Chef',
   'Alta cocina, en tu mesa.': 'Fine dining, at your table.',
   'Catering': 'Catering', 'Desayunos': 'Breakfasts', 'Arroces': 'Paellas', 'Cenas': 'Dinners', 'Eventos privados': 'Private events',
